@@ -17,37 +17,22 @@ import java.time.Duration;
 import java.util.List;
 
 public class ImportantQuestionsTest {
-    private WebDriver driver;
+    private final DriverFactory factory = new DriverFactory();
 
     @BeforeEach
     public void startUp() {
-        if ("firefox".equals(System.getProperty("browser"))) {
-            startUpFirefox();
-        } else {
-            startUpChrome();
-        }
-    }
-
-    public void startUpChrome() {
-        WebDriverManager.chromiumdriver().browserVersion("146").setup();
-        //WebDriverManager.chromiumdriver().setup();
-        driver = new ChromeDriver();
-    }
-
-    public void startUpFirefox() {
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
+        factory.startUp();
     }
 
     @Test
     public void openMainPage() throws Exception {
+        WebDriver driver = factory.getDriver();
+
         driver.get("https://qa-scooter.praktikum-services.ru/");
     }
 
-
-
     @AfterEach
     public void tearDown() {
-        driver.quit();
+        factory.getDriver().quit();
     }
 }
