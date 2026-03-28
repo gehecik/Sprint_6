@@ -11,6 +11,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static org.example.EnvConfig.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ImportantQuestionsPage {
@@ -20,10 +21,10 @@ public class ImportantQuestionsPage {
         this.driver = driver;
     }
 
-    protected final By cookieButton = By.className("App_CookieButton__3cvqF");
-    protected final By accordionItem = By.className("accordion__item");
-    protected final By accordionHeading = By.className("accordion__button");
-    protected final By accordionPanel = By.className("accordion__panel");
+    protected final By cookieButton = By.className(CLASS_COOKIE_BUTTON);
+    protected final By accordionItem = By.className(CLASS_ACCORDION_ITEM);
+    protected final By accordionHeading = By.className(CLASS_ACCORDION_HEADING);
+    protected final By accordionPanel = By.className(CLASS_ACCORDION_PANEL);
 
     public static class PairQuestionAnswer {
         public final String question;
@@ -55,11 +56,11 @@ public class ImportantQuestionsPage {
     );
 
     public void openPage() {
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(BASE_URL);
     }
 
     public void clickOnCookieButton() {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, EXPLICIT_TIMEOUT)
                 .until(ExpectedConditions.elementToBeClickable(cookieButton))
                 .click();
     }
@@ -75,10 +76,11 @@ public class ImportantQuestionsPage {
 
             WebElement question = elements.get(i).findElement(accordionHeading);
             WebElement answer = elements.get(i).findElement(accordionPanel);
-            new WebDriverWait(driver, Duration.ofSeconds(5))
+
+            new WebDriverWait(driver, EXPLICIT_TIMEOUT)
                     .until(ExpectedConditions.elementToBeClickable(question)).click();
 
-            new WebDriverWait(driver, Duration.ofSeconds(5))
+            new WebDriverWait(driver, EXPLICIT_TIMEOUT)
                     .until(ExpectedConditions.visibilityOf(answer));
 
             String actualQuestion = question.getText();
