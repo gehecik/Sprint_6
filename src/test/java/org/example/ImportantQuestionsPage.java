@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -15,16 +14,16 @@ import static org.example.EnvConfig.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ImportantQuestionsPage {
+    protected final By cookieButton = By.className(CLASS_COOKIE_BUTTON);
+    protected final By accordionItem = By.className(CLASS_ACCORDION_ITEM);
+    protected final By accordionHeading = By.className(CLASS_ACCORDION_HEADING);
+    protected final By accordionPanel = By.className(CLASS_ACCORDION_PANEL);
+
     private final WebDriver driver;
 
     public ImportantQuestionsPage(WebDriver driver) {
         this.driver = driver;
     }
-
-    protected final By cookieButton = By.className(CLASS_COOKIE_BUTTON);
-    protected final By accordionItem = By.className(CLASS_ACCORDION_ITEM);
-    protected final By accordionHeading = By.className(CLASS_ACCORDION_HEADING);
-    protected final By accordionPanel = By.className(CLASS_ACCORDION_PANEL);
 
     public static class PairQuestionAnswer {
         public final String question;
