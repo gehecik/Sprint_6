@@ -31,8 +31,14 @@ public class OrderTest {
                 "30-е марта 2026",
                 //"сутки",
                 "пятеро суток",
-                "black"
+                "black",
+                "Хотела проработать календарь, но не получилось"
         );
+        statusPage2.clickOnLastOrderButton();
+        statusPage2.clickOnYesButton();
+        statusPage2.checkOrder();
+        var statusPage3 = statusPage2.clickOnStatusViewButton();
+        statusPage3.checkStatusContent();
 
     }
 
