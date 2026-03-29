@@ -15,4 +15,6 @@ public class StatusPage3 extends BasePage{
     public void checkStatusContent() {
         checkLocator(orderStatusContent);
     }
+
+
 }

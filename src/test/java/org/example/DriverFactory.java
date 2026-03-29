@@ -11,6 +11,7 @@ public class DriverFactory {
     public void startUp() {
         if ("firefox".equals(System.getProperty("browser"))) {
             startUpFirefox();
+
         } else {
             startUpChrome();
         }

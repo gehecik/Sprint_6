@@ -3,8 +3,6 @@ package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.List;
-
 import static org.example.EnvConfig.*;
 
 public class StatusPage extends BasePage {
@@ -32,18 +30,12 @@ public class StatusPage extends BasePage {
         checkClickAndClick(locatorSubway);
     }
 
-    public void enterOrderPerson(List<String> personData) {
-        String name = personData.get(0);
-        String surname = personData.get(1);
-        String address = personData.get(2);
-        String subway = personData.get(3);
-        String phone = personData.get(4);
-
-        enterNewValue(orderName, name);
-        enterNewValue(orderSurname, surname);
-        enterNewValue(orderAddress, address);
-        enterSubwayValue(orderSubway, subway);
-        enterNewValue(orderPhone, phone);
+    public void enterOrderPerson(PersonData personData) {
+        enterNewValue(orderName, personData.name);
+        enterNewValue(orderSurname, personData.surname);
+        enterNewValue(orderAddress, personData.address);
+        enterSubwayValue(orderSubway, personData.subway);
+        enterNewValue(orderPhone, personData.phone);
     }
 
     public StatusPage2 clickOnNextOrderButton() {

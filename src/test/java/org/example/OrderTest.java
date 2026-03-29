@@ -15,7 +15,7 @@ public class OrderTest {
 
     @ParameterizedTest
     @MethodSource("orderData")
-    public void createOrderSuccessfully(String buttonForOrder, List<String> personData, List<String> rentData) {
+    public void createOrderSuccessfully(String buttonForOrder, PersonData personData, RentData rentData) {
         WebDriver driver = extension.getDriver();
         var orderPage = new OrderPage(driver);
 
@@ -23,8 +23,6 @@ public class OrderTest {
         orderPage.clickOnCookieButton();
 
         var statusPage = orderPage.clickOnOrderButton(buttonForOrder);
-        //if (orederButton.equals("middle")) statusPage = orderPage.clickOnMiddleOrderButton();
-
         statusPage.checkOrderContent();
         statusPage.enterOrderPerson(personData);
         var statusPage2 = statusPage.clickOnNextOrderButton();
@@ -41,29 +39,29 @@ public class OrderTest {
     private static Stream<Arguments> orderData() {
         return Stream.of(
                 Arguments.of("header",
-                        List.of("Имя",
+                        new PersonData("Имя",
                                 "Фамилия",
                                 "Тестовый адрес 123",
                                 "Черкизовская",
                                 "+1111111111"
                         ),
-                        List.of("30-е марта 2026",
+                        new RentData("30-е марта 2026", //"2026-03-30"
                                 "пятеро суток",
                                 "black",
                                 "Хотела проработать календарь, но не получилось"
                         )
                 ),
                 Arguments.of( "middle",
-                        List.of("ИмяИмя",
+                        new PersonData("ИмяИмя",
                                 "ФамилияФамилия",
                                 "Тестовый адрес 456",
                                 "Преображенская площадь",
                                 "+2222222222"
                         ),
-                        List.of("31-е марта 2026",
+                        new RentData("31-е марта 2026",
                                 "сутки",
                                 "grey",
-                                "Времени нет"
+                                "Ошибки в полях Станция метро - следующая, Дата доставки + срок"
                         )
                 )
         );

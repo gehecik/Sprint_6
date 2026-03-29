@@ -11,8 +11,6 @@ public class OrderPage extends BasePage  {
     protected final By orderButton = By.className(CLASS_ORDER_BUTTON);
     protected final By orderMiddleButton = By.xpath("//button[contains(@class,'Button_Middle__1CSJM') and text()='Заказать']");
 
-
-
     public OrderPage(WebDriver driver) {
         super(driver);
     }
@@ -29,7 +27,7 @@ public class OrderPage extends BasePage  {
         if (buttonForOrder.equals("header")) {
             checkClickAndClick(orderButton);
         } else {
-            checkClickAndClick(orderMiddleButton);
+                checkClickAndClick(orderMiddleButton);
         }
 
         return new StatusPage(driver);
