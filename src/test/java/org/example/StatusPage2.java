@@ -2,13 +2,11 @@ package org.example;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.Locale;
 
 import static org.example.EnvConfig.*;
@@ -31,8 +29,6 @@ public class StatusPage2 extends BasePage{
     protected final By currentMonthYear = By.className("react-datepicker__month");
     protected final By calendarDayItem = By.className("react-datepicker__day");
     //input value="299999"
-
-
     //Track_OrderInfo__2fpDL  Track_Value__15eEX
 
     public StatusPage2(WebDriver driver) {

@@ -8,12 +8,12 @@ import static org.example.EnvConfig.*;
 public class StatusPage extends BasePage {
 
     protected final By orderContent = By.xpath(XPATH_ORDER_PERSON_CONTENT);
-    protected final By orderName = By.cssSelector("[placeholder='* Имя']");
-    protected final By orderSurname = By.cssSelector("[placeholder='* Фамилия']");
-    protected final By orderAddress = By.cssSelector("[placeholder='* Адрес: куда привезти заказ']");
-    protected final By orderSubway = By.className("select-search__value");
-    protected final By subwayValue = By.className("select-search__options");
-    protected final By orderPhone = By.cssSelector("[placeholder='* Телефон: на него позвонит курьер']");
+    protected final By orderName = By.cssSelector(SELECTOR_ORDER_NAME);
+    protected final By orderSurname = By.cssSelector(SELECTOR_ORDER_SURNAME);
+    protected final By orderAddress = By.cssSelector(SELECTOR_ORDER_ADDRESS);
+    protected final By orderSubway = By.className(CLASS_ORDER_SUBWAY);
+    protected final By subwayValue = By.className(CLASS_SUBWAY_VALUE);
+    protected final By orderPhone = By.cssSelector(SELECTOR_ORDER_PHONE);
     protected final By orderNextButton = By.className(CLASS_NEXT_ORDER_BUTTON);
 
     public StatusPage(WebDriver driver) {

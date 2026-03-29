@@ -9,7 +9,7 @@ public class OrderPage extends BasePage  {
     protected final By cookieButton = By.className(CLASS_COOKIE_BUTTON);
     protected final By header = By.className(CLASS_HEADER_NAV);
     protected final By orderButton = By.className(CLASS_ORDER_BUTTON);
-    protected final By orderMiddleButton = By.xpath("//button[contains(@class,'Button_Middle__1CSJM') and text()='Заказать']");
+    protected final By orderMiddleButton = By.xpath(XPATH_ORDER_MIDDLE_BUTTON);
 
     public OrderPage(WebDriver driver) {
         super(driver);
