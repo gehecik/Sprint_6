@@ -15,14 +15,15 @@ public class OrderTest {
 
     @ParameterizedTest
     @MethodSource("orderData")
-    public void createOrderSuccessfully(List<String> personData, List<String> rentData) {
+    public void createOrderSuccessfully(String buttonForOrder, List<String> personData, List<String> rentData) {
         WebDriver driver = extension.getDriver();
         var orderPage = new OrderPage(driver);
 
         orderPage.openPage();
         orderPage.clickOnCookieButton();
-        var statusPage = orderPage.clickOnHeaderOrderButton();
-        //clickOnMiddleOrderButton()
+
+        var statusPage = orderPage.clickOnOrderButton(buttonForOrder);
+        //if (orederButton.equals("middle")) statusPage = orderPage.clickOnMiddleOrderButton();
 
         statusPage.checkOrderContent();
         statusPage.enterOrderPerson(personData);
@@ -39,7 +40,7 @@ public class OrderTest {
 
     private static Stream<Arguments> orderData() {
         return Stream.of(
-                Arguments.of(
+                Arguments.of("header",
                         List.of("Имя",
                                 "Фамилия",
                                 "Тестовый адрес 123",
@@ -52,14 +53,14 @@ public class OrderTest {
                                 "Хотела проработать календарь, но не получилось"
                         )
                 ),
-                Arguments.of(
+                Arguments.of( "middle",
                         List.of("ИмяИмя",
                                 "ФамилияФамилия",
                                 "Тестовый адрес 456",
                                 "Преображенская площадь",
                                 "+2222222222"
                         ),
-                        List.of("30-е марта 2026",
+                        List.of("31-е марта 2026",
                                 "сутки",
                                 "grey",
                                 "Времени нет"

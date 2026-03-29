@@ -38,7 +38,9 @@ public class StatusPage2 extends BasePage{
     public void selectDate(By locator, String date) {
         checkClickAndClick(locator);
         checkLocator(calendar);
-        By checkbox = By.cssSelector("div[aria-label='Choose понедельник, " + date + " г.']");
+        String xpath = "//div[contains(@aria-label, '" + date + "')]";
+        By checkbox = By.xpath(xpath);
+                        //By.cssSelector("div[aria-label='Choose понедельник, " + date + " г.']");
         checkLocator(checkbox);
         checkClickAndClick(checkbox);
         checkInvisibleOfLocator(calendar);
