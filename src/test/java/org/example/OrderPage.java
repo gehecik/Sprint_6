@@ -12,7 +12,7 @@ public class OrderPage {
     protected final By cookieButton = By.className(CLASS_COOKIE_BUTTON);
     protected final By header = By.className(CLASS_HEADER_NAV);
     protected final By orderButton = By.className(CLASS_ORDER_BUTTON);
-    protected final By orderFinishButton = By.className(CLASS_FINISH_ORDER_BUTTON);
+
 
 
     private final WebDriver driver;
@@ -43,11 +43,7 @@ public class OrderPage {
         return new StatusPage(driver);
     }
 
-    public void clickOnFinishOrderButton() {
-        new WebDriverWait(driver, EXPLICIT_TIMEOUT)
-                .until(ExpectedConditions.elementToBeClickable(orderFinishButton))
-                .click();
-    }
+
 
 
 }

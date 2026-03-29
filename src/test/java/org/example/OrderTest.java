@@ -2,6 +2,7 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class OrderTest {
@@ -16,14 +17,17 @@ public class OrderTest {
         orderPage.openPage();
         orderPage.clickOnCookieButton();
         var statusPage = orderPage.clickOnHeaderOrderButton();
-        //orderPage.clickOnFinishOrderButton();
+
         statusPage.checkOrderContent();
-        statusPage.enterNewNameValue("Имя");
-        statusPage.enterNewSurnameValue("Фамилия");
-        statusPage.enterNewAddressValue("Тестовый адрес 123");
-        statusPage.enterNewPhoneValue("+1111111111");
+        statusPage.enterOrderPerson(
+                "Имя",
+                "Фамилия",
+                "Тестовый адрес 123",
+                "Черкизовская",
+                "+1111111111"
+        );
 
-
+        statusPage.clickOnNextOrderButton();
     }
 
 

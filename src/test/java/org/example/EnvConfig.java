@@ -11,6 +11,6 @@ public class EnvConfig {
     public static final String CLASS_ACCORDION_PANEL = "accordion__panel";
     public static final String CLASS_HEADER_NAV = "Header_Nav__AGCXC";
     public static final String CLASS_ORDER_BUTTON = "Button_Button__ra12g";
-    public static final String CLASS_FINISH_ORDER_BUTTON = "Button_Middle__1CSJM";
+    public static final String CLASS_NEXT_ORDER_BUTTON = "Button_Middle__1CSJM";
     public static final String CLASS_ORDER_CONTENT = "Order_Content__bmtHS";
 }
