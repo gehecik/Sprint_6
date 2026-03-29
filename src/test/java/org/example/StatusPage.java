@@ -27,27 +27,25 @@ public class StatusPage {
         this.driver = driver;
     }
 
-    public void checkOrderContent() {
-        WebElement element = driver.findElement(orderContent);
+    public void checkClickAndClick(By locator) {
         new WebDriverWait(driver, EXPLICIT_TIMEOUT)
-                .until(ExpectedConditions.visibilityOf(element))
-                .click();
+                .until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
+
+    public void checkOrderContent() {
+        checkClickAndClick(orderContent);
     }
 
     public void enterNewValue(By locator, String newValue) {
-        if (driver.findElement(locator).isEnabled()) {
-            driver.findElement(locator).clear();
-            driver.findElement(locator).sendKeys(newValue);
-        }
+        checkClickAndClick(locator);
+        driver.findElement(locator).clear();
+        driver.findElement(locator).sendKeys(newValue);
     }
 
     public void enterSubwayValue(By locator, String subway) {
-        driver.findElement(locator).click();
-
+        checkClickAndClick(locator);
         By locatorSubway = By.xpath("//div[text()='" + subway + "']");
-        new WebDriverWait(driver, EXPLICIT_TIMEOUT)
-                .until(ExpectedConditions.elementToBeClickable(locatorSubway))
-                .click();
+        checkClickAndClick(locatorSubway);
     }
 
     public void enterOrderPerson(String name, String surname, String address, String subway, String phone) {
@@ -59,8 +57,6 @@ public class StatusPage {
     }
 
     public void clickOnNextOrderButton() {
-        new WebDriverWait(driver, EXPLICIT_TIMEOUT)
-                .until(ExpectedConditions.elementToBeClickable(orderNextButton))
-                .click();
+        checkClickAndClick(orderNextButton);
     }
 }

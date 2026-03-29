@@ -13,8 +13,6 @@ public class OrderPage {
     protected final By header = By.className(CLASS_HEADER_NAV);
     protected final By orderButton = By.className(CLASS_ORDER_BUTTON);
 
-
-
     private final WebDriver driver;
 
     public OrderPage(WebDriver driver) {
@@ -42,8 +40,5 @@ public class OrderPage {
 
         return new StatusPage(driver);
     }
-
-
-
 
 }

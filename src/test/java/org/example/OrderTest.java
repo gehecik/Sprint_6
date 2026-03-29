@@ -2,7 +2,6 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class OrderTest {
@@ -26,7 +25,6 @@ public class OrderTest {
                 "Черкизовская",
                 "+1111111111"
         );
-
         statusPage.clickOnNextOrderButton();
     }
 
