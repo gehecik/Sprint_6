@@ -2,7 +2,6 @@ package org.example;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,7 +9,8 @@ import static org.example.EnvConfig.*;
 
 public class StatusPage {
 
-    protected final By orderContent = By.className(CLASS_ORDER_CONTENT);
+    //protected final By orderContent = By.className(CLASS_ORDER_CONTENT);
+    protected final By orderContent = By.xpath(XPATH_ORDER_PERSON_CONTENT);
     protected final By orderName = By.cssSelector("[placeholder='* Имя']");
     protected final By orderSurname = By.cssSelector("[placeholder='* Фамилия']");
     protected final By orderAddress = By.cssSelector("[placeholder='* Адрес: куда привезти заказ']");
@@ -27,13 +27,18 @@ public class StatusPage {
         this.driver = driver;
     }
 
+    public void checkLocator(By locator) {
+        new WebDriverWait(driver, EXPLICIT_TIMEOUT)
+                .until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
     public void checkClickAndClick(By locator) {
         new WebDriverWait(driver, EXPLICIT_TIMEOUT)
                 .until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
     public void checkOrderContent() {
-        checkClickAndClick(orderContent);
+        checkLocator(orderContent);
     }
 
     public void enterNewValue(By locator, String newValue) {
@@ -56,7 +61,9 @@ public class StatusPage {
         enterNewValue(orderPhone, phone);
     }
 
-    public void clickOnNextOrderButton() {
+    public StatusPage2 clickOnNextOrderButton() {
         checkClickAndClick(orderNextButton);
+
+        return new StatusPage2(driver);
     }
 }

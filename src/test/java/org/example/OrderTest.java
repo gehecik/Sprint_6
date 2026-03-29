@@ -25,7 +25,15 @@ public class OrderTest {
                 "Черкизовская",
                 "+1111111111"
         );
-        statusPage.clickOnNextOrderButton();
+        var statusPage2 = statusPage.clickOnNextOrderButton();
+        statusPage2.checkRentContent();
+        statusPage2.enterOrderRent(
+                "30-е марта 2026",
+                //"сутки",
+                "пятеро суток",
+                "black"
+        );
+
     }
 
 
