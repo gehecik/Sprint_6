@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 import static org.example.EnvConfig.*;
 
 public class StatusPage2 extends BasePage{
@@ -63,7 +65,12 @@ public class StatusPage2 extends BasePage{
         checkClickAndClick(checkbox);
     }
 
-    public void enterOrderRent(String date, String days, String color, String comment) {
+    public void enterOrderRent(List<String> rentData) {
+        String date = rentData.get(0);
+        String days = rentData.get(1);
+        String color = rentData.get(2);
+        String comment = rentData.get(3);
+
         selectDate(orderDate, date);
         selectDropdown(orderDropdown, days);
         selectCheckbox(color);

@@ -9,6 +9,8 @@ public class OrderPage extends BasePage {
     protected final By cookieButton = By.className(CLASS_COOKIE_BUTTON);
     protected final By header = By.className(CLASS_HEADER_NAV);
     protected final By orderButton = By.className(CLASS_ORDER_BUTTON);
+    protected final By orderMiddleButton = By.className(CLASS_ORDER_BUTTON);
+
 
     public OrderPage(WebDriver driver) {
         super(driver);
@@ -24,6 +26,12 @@ public class OrderPage extends BasePage {
 
     public StatusPage clickOnHeaderOrderButton() {
         checkClickAndClick(orderButton);
+
+        return new StatusPage(driver);
+    }
+
+    public StatusPage clickOnMiddleOrderButton() {
+        checkClickAndClick(orderMiddleButton);
 
         return new StatusPage(driver);
     }
