@@ -1,5 +1,7 @@
-package org.example;
+package org.example.tests.faq;
 
+import org.example.utils.DriverExtension;
+import org.example.pages.faq.ImportantQuestionsPage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.WebDriver;

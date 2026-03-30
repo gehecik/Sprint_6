@@ -1,5 +1,6 @@
-package org.example;
+package org.example.pages.faq;
 
+import org.example.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -10,19 +11,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static org.example.EnvConfig.*;
+import static org.example.locators.EnvConfig.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ImportantQuestionsPage {
+public class ImportantQuestionsPage extends BasePage {
     protected final By cookieButton = By.className(CLASS_COOKIE_BUTTON);
-    protected final By accordionItem = By.className(CLASS_ACCORDION_ITEM);
-    protected final By accordionHeading = By.className(CLASS_ACCORDION_HEADING);
-    protected final By accordionPanel = By.className(CLASS_ACCORDION_PANEL);
-
-    private final WebDriver driver;
+    protected final By accordionItem = By.className("accordion__item");
+    protected final By accordionHeading = By.className("accordion__button");
+    protected final By accordionPanel = By.className("accordion__panel");
 
     public ImportantQuestionsPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public static class PairQuestionAnswer {
@@ -59,9 +58,7 @@ public class ImportantQuestionsPage {
     }
 
     public void clickOnCookieButton() {
-        new WebDriverWait(driver, EXPLICIT_TIMEOUT)
-                .until(ExpectedConditions.elementToBeClickable(cookieButton))
-                .click();
+        checkClickAndClick(cookieButton);
     }
 
     public List<WebElement> getElements () {

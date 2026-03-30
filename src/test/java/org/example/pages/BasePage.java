@@ -1,11 +1,11 @@
-package org.example;
+package org.example.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.example.EnvConfig.EXPLICIT_TIMEOUT;
+import static org.example.locators.EnvConfig.EXPLICIT_TIMEOUT;
 
 public class BasePage {
     protected final WebDriver driver;

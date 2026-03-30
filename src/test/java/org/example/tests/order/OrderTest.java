@@ -1,12 +1,15 @@
-package org.example;
+package org.example.tests.order;
 
+import org.example.utils.DriverExtension;
+import org.example.pages.order.OrderHomePage;
+import org.example.data.PersonData;
+import org.example.data.RentData;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.WebDriver;
 
-import java.util.List;
 import java.util.stream.Stream;
 
 public class OrderTest {
@@ -17,22 +20,22 @@ public class OrderTest {
     @MethodSource("orderData")
     public void createOrderSuccessfully(String buttonForOrder, PersonData personData, RentData rentData) {
         WebDriver driver = extension.getDriver();
-        var orderPage = new OrderPage(driver);
+        var orderPage = new OrderHomePage(driver);
 
         orderPage.openPage();
         orderPage.clickOnCookieButton();
 
-        var statusPage = orderPage.clickOnOrderButton(buttonForOrder);
-        statusPage.checkOrderContent();
-        statusPage.enterOrderPerson(personData);
-        var statusPage2 = statusPage.clickOnNextOrderButton();
-        statusPage2.checkRentContent();
-        statusPage2.enterOrderRent(rentData);
-        statusPage2.clickOnLastOrderButton();
-        statusPage2.clickOnYesButton();
-        statusPage2.checkOrder();
-        var statusPage3 = statusPage2.clickOnStatusViewButton();
-        statusPage3.checkStatusContent();
+        var orderPersonPage = orderPage.clickOnOrderButton(buttonForOrder);
+        orderPersonPage.checkOrderContent();
+        orderPersonPage.enterOrderPerson(personData);
+        var orderRentPage = orderPersonPage.clickOnNextOrderButton();
+        orderRentPage.checkRentContent();
+        orderRentPage.enterOrderRent(rentData);
+        orderRentPage.clickOnLastOrderButton();
+        orderRentPage.clickOnYesButton();
+        orderRentPage.checkOrder();
+        var orderViewPage = orderRentPage.clickOnStatusViewButton();
+        orderViewPage.checkStatusContent();
 
     }
 

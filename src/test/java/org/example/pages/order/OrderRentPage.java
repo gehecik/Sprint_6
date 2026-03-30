@@ -1,5 +1,7 @@
-package org.example;
+package org.example.pages.order;
 
+import org.example.pages.BasePage;
+import org.example.data.RentData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,10 +11,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import static org.example.EnvConfig.*;
+import static org.example.locators.EnvConfig.*;
 
-public class StatusPage2 extends BasePage{
-    protected final By orderRentContent = By.xpath(XPATH_ORDER_RENT_CONTENT);
+public class OrderRentPage extends BasePage {
+    protected final By orderRentContent = By.xpath("//div[contains(text(),'Про аренду')]");
     protected final By orderDate = By.cssSelector("[placeholder='* Когда привезти самокат']");
     protected final By orderDropdown = By.className("Dropdown-placeholder");
     protected final By orderDropdownMenu = By.className("Dropdown-menu");
@@ -31,7 +33,7 @@ public class StatusPage2 extends BasePage{
     //input value="299999"
     //Track_OrderInfo__2fpDL  Track_Value__15eEX
 
-    public StatusPage2(WebDriver driver) {
+    public OrderRentPage(WebDriver driver) {
         super(driver);
     }
 
@@ -85,7 +87,6 @@ public class StatusPage2 extends BasePage{
 
         String xpath = "//div[contains(@aria-label, '" + date + "')]";
         By checkbox = By.xpath(xpath);
-                        //By.cssSelector("div[aria-label='Choose понедельник, " + date + " г.']");
         checkLocator(checkbox);
         checkClickAndClick(checkbox);
         checkInvisibleOfLocator(calendar);
@@ -113,28 +114,24 @@ public class StatusPage2 extends BasePage{
     }
 
     public void enterOrderRent(RentData rentData) {
-
-
         selectDate(orderDate, rentData.date);
         selectDropdown(orderDropdown, rentData.days);
         selectCheckbox(rentData.color);
         enterNewValue(orderComment, rentData.comment);
-
     }
 
     public void clickOnLastOrderButton() {
         checkClickAndClick(finishOrder);
     }
 
-
     public void clickOnYesButton() {
         checkClickAndClick(yesButton);
     }
 
-    public StatusPage3 clickOnStatusViewButton() {
+    public OrderViewPage clickOnStatusViewButton() {
         checkClickAndClick(statusViewButton);
 
-        return new StatusPage3(driver);
+        return new OrderViewPage(driver);
     }
 
     public void checkOrder() {

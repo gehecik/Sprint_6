@@ -1,4 +1,4 @@
-package org.example;
+package org.example.data;
 
 public class RentData {
     public String date;
